@@ -1,0 +1,107 @@
+module.exports = function(app){
+	//will show you the login page
+	app.get('/',function  (req,res) {
+		res.render('login');
+		
+	})
+
+	//will process the login information
+	app.get('/login',function (res,req){
+		uid = req.query.uid;
+		var qury = 'select count(*) as exist from user where uid='+uid;
+		connection.query(qury, function(err, rows, fields) {
+	  		if (!err){
+	  			//console.log(fields); GIVE THE information about the colums
+		  		for(value in rows){
+			  		if(rows[value].exist)
+			  		{
+			  			res.render('login',{message : "try again"});
+			  		}
+			  		else
+			  		{
+			  			res.render('option');
+			  		}
+			  	}
+	  		}
+	    	
+	 		else
+	    	console.log('Error while performing Query.');
+	  		
+	  	});
+	})
+
+	//will give the register page
+	app.get('/register',function (res,req){
+		res.render('register');
+	})
+
+	//adds the user to the database
+	app.get('/adduser',function (res,req){
+		for(value in rows){
+			var name = rows[value].name;
+			var email = rows[value].email;
+			var no = rows[value].no;
+			var qury = 'insert into user (name,email,phoneno) values('+name+','+email+','+no+')';
+			connection.query(qury, function(err, rows, fields) {
+				if(!err)
+				{
+					var qur = 'select uid from user where email='+email;
+					connection.query(qury, function(err, rows, fields){
+						if(!err)
+						{
+							res.render('option',{message : "your uid is"+uid});
+						}
+						else
+						{
+							console.log("error when retiriving the uid");
+							res.render('register',{message : 'try again'});
+						}
+					});
+				}
+				else{
+					console.log("error during the add user phase");
+					res.render('register',{message : "email already exist"});
+				}
+			
+			});	
+
+		}
+	})
+
+	//route to give the user the movie to rate upon
+	app.get('/form',function (req,res){
+		//retriving a random movie to get rating of user id 1;
+		var qury = 'select mid,title from movie order by rand() limit 1';
+		var movieName;
+		
+		connection.query(qury, function(err, rows, fields) {
+	  		if (!err){
+		  		//console.log(fields); GIVE THE information about the colums
+		  		for(value in rows){
+		  		movieName = rows[value].title;
+		  		console.log('The solution is: ', rows[value].title);
+		  		res.render('home',{title : movieName});
+		  		}
+	  		}
+	    	
+	 		else
+	    	console.log('Error while performing Query.');
+	  		
+	  	});
+
+	})
+
+	//route to give the rating given bu user
+	app.get('/rating',function  (req,res){
+		var rating = req.query.rating;
+		var qury = 'insert into orating values('+uid+','+mid+','+rating+')';
+		connection.query(qury, function(err, rows, fields) {
+	  		if (!err){
+	  		//console.log(fields); GIVE THE information about the colums
+	  		}
+	 		else
+	    	console.log('Error while performing Query.');
+	  		
+	  	});
+	});
+}

@@ -1,0 +1,787 @@
+show DATAbases
+;
+CREATE DATABASE BANK;
+use BANK;
+CREATE TABLE employee_no
+;
+CREATE TABLE employee_no
+(branch_no varchar[2],
+name varchar[15],
+emp int[3]);
+CREATE TABLE employee_no (branch_no varchar[2], name varchar[15], emp int[3]);
+CREATE TABLE employee_no (branch_no varchar(2), name varchar(15), emp int(3));
+INSERT into employee_no
+value('B1','Vile  Parle',120);
+INSERT into employee_no value('B1','Vile  Parle',120);
+INSERT into employee_no value('B2','Andheri',115);
+INSERT into employee_no value('B3','Church Gate',104);
+INSERT into employee_no value('B4','Sion',57);
+INSERT into employee_no value('B6','Borivali',78);
+INSERT into employee_no value('B5','Bandra',48);
+Show employee_no;
+SELECT * FROM employee_no;
+SELECT name FROM employee_np;
+SELECT * FROM employee_no;
+SELECT name FROM employee_no;
+SELECT * FROM employee_no
+where 'name'='Church Gate';
+SELECT * FROM employee_no where 'name'='Church Gate';
+SELECT * FROM employee_no where name='Church Gate';
+SELECT * FROM employee_no;
+SELECT name FROM employee_no;
+SELECT * FROM employee_no where name='Church Gate';
+SELECT name,emp FROM employee_no
+where branch='B4';
+SELECT name,emp FROM employee_no where branch='B4';
+SELECT * FROM employee_no;
+SELECT name FROM employee_no;
+SELECT * FROM employee_no where name='Church Gate';
+SELECT name,emp FROM employee_no where branch_no='B4';
+clear
+INSERT INTO employee_no
+value('B7','Bahendra',56);
+INSERT INTO employee_no value('B7','Bahendra',56);
+ALTER TABLE employee_no
+drop ;
+ALTER TABLE employee_no drop;
+DELETE FROM employee_no
+where branch_no='B7';
+DELETE FROM employee_no where branch_no='B7';
+SELECT * from employee_no;
+INSERT INTO employee_no value('B6','Borivali',78);
+SELECT * distinct from employee_no;
+SELECT  distinct * from employee_no;
+DELETE FROM employee_no where branch_no='B6';
+INSERT INTO employee_no value('B6','Borivali',78);
+SELECT * from employee_no;
+DELETE FROM employee_no where branch_no='B6';
+INSERT INTO employee_no value('B6','Borivali',78);
+SELECT DISTINCT * FROM employee_no;
+SELECT * FROM employee_no
+ORDER BY name DESC;
+SELECT * FROM employee_no ORDER BY name DESC;
+SELECT * FROM employee_no ORDER BY name ASC;
+DELETE FROM employee_no where branch_no='B6';
+UPDATE employee_no
+SET name='Head Office'
+WHERE branch_no='B1';
+UPDATE employee_no SET name='Head Office' WHERE branch_no='B1';
+SELECT * FROM employee_no
+;
+ALTER TABLE employee_no
+ADD phone int;
+ALTER TABLE employee_no ADD phone int;
+SELECT * FROM employee_no
+;
+ALTER TABLE employee_no DROP phone;
+SELECT * FROM employee_no
+;
+ALTER TABLE employee_no ALTER COLUMN emp int(4);;
+ALTER TABLE employee_no ALTER COLUMN emp int(4);
+ALTER TABLE employee_no MODIFY emp int(4);
+ALTER TABLE employee_no ADD phone int;
+ALTER TABLE employee_no DROP phone;
+SELECT * FROM employee_no;
+ALTER TABLE employee_no MODIFY emp int(4);
+CREATE TABLE EMP
+(empNo NOT NULL int(4) primary key,
+ENAME varchar(10),
+JOB varchar(9),
+MGR int(4),
+HIREDATE date,
+SAL decimal(7,2),
+COMM decimal(7,2),
+DEPTNO int(2));
+CREATE TABLE EMP (empNo NOT NULL int(4) primary key, ENAME varchar(10), JOB varchar(9), MGR int(4), HIREDATE date, SAL decimal(7,2), COMM decimal(7,2), DEPTNO int(2));
+CREATE TABLE EMP (empNo int(4) NOT NULL primary key, ENAME varchar(10), JOB varchar(9), MGR int(4), HIREDATE date, SAL decimal(7,2), COMM decimal(7,2), DEPTNO int(2));
+CREATE TABLE DEPT
+(DEPTNO int(2) NOT NULL primary key,
+DNAME varchar(14),
+LOC varchar(13));
+CREATE TABLE DEPT (DEPTNO int(2) NOT NULL primary key, DNAME varchar(14), LOC varchar(13));
+show tables;
+show EMP;
+DESCRIBE EMP;
+DESCRIBE DEPT;
+ALTER TABLE EMP 
+ADD FOREIGN key (DEPTNO)
+REFERENCES DEPT(DEPTNO);
+ALTER TABLE EMP  ADD FOREIGN key (DEPTNO) REFERENCES DEPT(DEPTNO);
+DESCRIBE EMP;
+LOAD DATA LOCAL INFILE
+'/home/akshat/dept.txt' INTO TABLE DEPT;
+LOAD DATA LOCAL INFILE '/home/akshat/dept.txt' INTO TABLE DEPT;
+Show DATABSES;
+Show DATABaSES;
+LOAD DATA LOCAL INFILE '/home/akshat/dept.txt' INTO TABLE DEPT;
+SELECT * from DEPT;
+DELETE from DEPT;
+SELECT * from DEPT;
+LOAD DATA LOCAL INFILE '/home/akshat/dept.txt' INTO TABLE DEPT
+FIELDS TERMINATED BY ' '
+LINES TERMINATED BY '\n';
+LOAD DATA LOCAL INFILE '/home/akshat/dept.txt' INTO TABLE DEPT FIELDS TERMINATED BY ' ' LINES TERMINATED BY '\n';
+SELECT * from DEPT;
+LOAD DATA LOCAL INFILE '/home/akshat/emp.txt' INTO TABLE EMP FIELDS TERMINATED BY ' ' LINES TERMINATED BY '\n';
+SELECT * from DEPT;
+SELECT * from EMP;
+SELECT * from EMP,DEPt;
+SELECT * from EMP,DEPT;
+SELECT * from EMP,DEPT where EMP(DEPTNO)=DEPT(DEPTNO);
+SELECT * from EMP,DEPT where EMP.DEPTNO=DEPT.DEPTNO;
+SELECT * from EMP INNER JOIN  DEPT ON EMP.DEPTNO=DEPT.DEPTNO;
+SELECT empNo,DEPTNO,DNAME from EMP INNER JOIN  DEPT ON EMP.DEPTNO=DEPT.DEPTNO;
+SELECT ENAME,DEPTNO,DNAME from EMP INNER JOIN  DEPT ON EMP.DEPTNO=DEPT.DEPTNO;
+SELECT ENAME,EMP.DEPTNO,DNAME from EMP INNER JOIN  DEPT ON EMP.DEPTNO=DEPT.DEPTNO;
+INSERT INTO EMP
+values(7400, 'AKSHAT GOYAL',  7402, 17-DEC-80, 800, 0, 20);
+INSERT INTO EMP values(7400, 'AKSHAT GOYAL',  7402, 17-DEC-80, 800, 0, 20);
+INSERT INTO EMP values(7400, 'AKSHAT GOYAL',  7402, '17-DEC-80', 800, 0, 20);
+INSERT INTO EMP values(7400, 'AKSHAT GOYAL',  7402, 0, 800, 0, 20);
+INSERT INTO EMP values(7400, 'AKSHAT GOYAL',  0000-00-00, 0, 800, 0, 20);
+INSERT INTO EMP values(7400, 'AKSHAT','ENGINEER',  0000-00-00, 0, 800, 0, 20);
+SELECT empNo,DEPTNO,DNAME from EMP INNER JOIN  DEPT ON EMP.DEPTNO=DEPT.DEPTNO;
+SELECT ENAME,EMP.DEPTNO,DNAME from EMP INNER JOIN  DEPT ON EMP.DEPTNO=DEPT.DEPTNO;
+SELECT * from EMP INNER JOIN  DEPT ON EMP.DEPTNO=DEPT.DEPTNO;
+SELECT ENAME,EMP.DEPTNO,DNAME from EMP INNER JOIN  DEPT ON EMP.DEPTNO=DEPT.DEPTNO;
+SELECT DISTINCT JOB,LOC from EMP INNER JOIN  DEPT ON EMP.DEPTNO=DEPT.DEPTNO WHERE EMP.DEPTNO=30;
+SELECT ENAME,DNAME,LOC from EMP INNER JOIN  DEPT ON EMP.DEPTNO=DEPT.DEPTNO WHERE COMM!=0;
+SELECT ENAME,DNAME from EMP INNER JOIN  DEPT ON EMP.DEPTNO=DEPT.DEPTNO WHERE ENAME LIKE 'A%';
+SELECT ENAME,JOB,EMP.DEPTNO,DNAME from EMP INNER JOIN  DEPT ON EMP.DEPTNO=DEPT.DEPTNO WHERE LOC='DALLAS';
+describe EMP;
+show tables;
+show DATABASES;
+use BANK;'
+;
+use imdb
+show tables;
+select * from movie_info limit 10
+;
+select * from keyword limit 10;
+select * from name limit 10;
+select * from title limit 10;
+select * from title limit 100;
+select * from title limit 100 where title like '%Philip%';;
+select * from title limit 100 where title like '%Philip%';
+select * from title limit 100 where title like "%Philip%";
+select * from title where title like "%Philip%" limit 100;;
+select * from title where title like "%Catch%" limit 100;;
+use imdb
+show tables;
+select * from name limit 10;
+select * from movie_info limit 10;
+select * from movie_info limit 50;
+select * from movie_info limit 10;
+select * from name limit 10;
+select * from keyword limit 10;
+select * from title limit 10;
+describe title;
+describe movie_info;
+show tables;
+describe movie_info;
+descirbe movie_info_inx;
+descirbe movie_info_idx;
+describe movie_info_idx;
+describe movie_keyword;
+describe aka_title;
+use imdb
+show tables
+;
+select * from aka_title limit 10;
+show tables;
+select * from movie_info limit 10;
+select movie_info.info,aka_title.title from aka_title,movie_info where movie_info.movie_id=aka_title.movie_id and aka_title.title like 'Catch%';
+select p.title,pm.info,q.title,qm.movie_info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.name like 'Catch me if you%' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id;
+select p.title,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.name like 'Catch me if you%' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id;
+select p.title,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'Catch me if you%' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id;
+select p.title,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'Catch me if you%' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 100;
+select p.title,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'Catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 100;;
+show databaes;
+show databases;
+use BANK;
+show tables;
+describe employee_no;
+select * from EMP;
+update EMP
+set HIREDATE = 1980-17-12
+where empNo=7240;
+update EMP set HIREDATE = 1980-17-12 where empNo=7240;
+select * from EMP;
+update EMP set HIREDATE = 1980-12-17 where empNo=7240;
+select * from EMP;
+update EMP set HIREDATE = '1980-17-12' where empNo=7240;
+select * from EMP;
+update EMP set HIREDATE = '1980-12-17' where empNo=7240;
+select * from EMP;
+update EMP set HIREDATE = '1981-02-20' where empNo=7369;
+select * from EMP;
+update EMP set HIREDATE = '1981-02-22' where empNo=7499;
+update EMP set HIREDATE = '1981-04-02' where empNo=7521;
+select * from EMP;
+update EMP set HIREDATE = '1981-09-28' where empNo=7566;
+update EMP set HIREDATE = '1981-05-01' where empNo=7654;
+update EMP set HIREDATE = '1981-06-09' where empNo=7698;
+select * from EMP;
+update EMP set HIREDATE = '1981-06-09' where empNo=7782;
+update EMP set HIREDATE = '1981-12-17' where empNo=7369;
+update EMP set HIREDATE = '1981-02-20' where empNo=7499;
+update EMP set HIREDATE = '1981-02-22' where empNo=7521;
+update EMP set HIREDATE = '1981-04-02' where empNo=7566;
+update EMP set HIREDATE = '1981-09-28' where empNo=7654;
+update EMP set HIREDATE = '1981-05-01' where empNo=7698;
+update EMP set HIREDATE = '1981-04-19' where empNo=7788;
+update EMP set HIREDATE = '1981-11-17' where empNo=7839;
+update EMP set HIREDATE = '1981-09-08' where empNo=7844;
+update EMP set HIREDATE = '1981-05-23' where empNo=7876;
+update EMP set HIREDATE = '1981-12-03' where empNo=7900;
+update EMP set HIREDATE = '1981-12-03' where empNo=7902;
+update EMP set HIREDATE = '1982-01-23' where empNo=7934;
+update EMP set HIREDATE = '1987-05-23' where empNo=7876;
+update EMP set HIREDATE = '1987-04-19' where empNo=7788;
+use BANL
+use BANk
+use BANK;
+show tables;
+show databsesl
+l
+;
+show databsesl l;
+show databses;
+show databases;
+use industery
+use industry
+show tables;
+describe CLIENT;
+SELECT name from CLIENT where name like '_A%';
+SELECT name from CLIENT;
+SELECT * FROM CLIENT WHERE city like 'M%';
+SELECT * FROM CLIENT WHERE city='BANGALORE' OR city='MANGALORE';
+SELECT * FROM CLIENT WHERE baldue=10000;
+SELECT * FROM CLIENT WHERE baldue>10000;
+show tables;
+SELECT * FROM SALEs;
+SELECT * FROM SALES;
+SELECT * FROM SALES where MONTH(Orderdate)=6;
+SELECT * FROM PRODUCT;
+SELECT * FROM PRODUCT WHERE sellPrice>500 AND sellPrice<700;
+SELECT product_no,descsellPrice FROM PRODUCT WHERE sellPrice>500;
+show tables;
+SELECT * FROM CLIENT WHERE city!='MAHARASHTRA';
+SELECT * FROM CLIENT WHERE city!='MAHARASTRA';
+SELECT * FROM CLIENT WHERE state!='MAHARASTRA';
+SELECT name,city,state FROM CLIENT WHERE state!='MAHARASTRA';
+use induistry;
+use indu\stry;
+use industry;
+SELECT name,city,state FROM CLIENT WHERE state!='MAHARASTRA';
+show tables;
+select * from SALES;
+select count(OrderNo) from SALES;
+select count() from SALES;
+SELECT * FROM PRODUCT;
+SELECT avg(sellPrice) FROM PRODUCT;
+SELECT min(sellPrice),max(sellPrice) FROM PRODUCT;
+SELECT count(product_no) FROM PRODUCT where sellPrice<=500;
+SELECT * FROM PRODUCT where profitPercent>4;
+USE BANKL
+USE BANK;
+SELECT * FROM EMP;
+SELECT  ENAME,E.DEPTNO,DNAME EMP AS E,DEPTNO AS D WHERE E.DEPTNO=D.DEPTNO;
+SELECT  E.ENAME,E.DEPTNO,D.DNAME EMP AS E,DEPTNO AS D WHERE E.DEPTNO=D.DEPTNO;
+SELECT  E.ENAME,E.DEPTNO,D.DNAME EMP AS E,DEPT AS D WHERE E.DEPTNO=D.DEPTNO;
+SELECT * FROM DEPT;
+SELECT  E.ENAME,E.DEPTNO,D.DNAME FROM EMP AS E,DEPT AS D WHERE E.DEPTNO=D.DEPTNO;
+SELECT  DISTICNT E.ENAME,E.DEPTNO,D.DNAME FROM EMP AS E,DEPT AS D WHERE E.DEPTNO=D.DEPTNO,E.DEPTNO=30;
+SELECT  DISTINCT E.ENAME,E.DEPTNO,D.DNAME FROM EMP AS E,DEPT AS D WHERE E.DEPTNO=D.DEPTNO,E.DEPTNO=30;
+SELECT  DISTINCT E.JOB,D.LOC FROM EMP AS E,DEPT AS D WHERE E.DEPTNO=D.DEPTNO,E.DEPTNO=30;
+SELECT  DISTINCT E.JOB,D.LOC FROM EMP AS E,DEPT AS D WHERE E.DEPTNO=D.DEPTNO AND  E.DEPTNO=30;
+SELECT  DISTINCT E.ENAME,D.DNAME,D.LOC FROM EMP AS E,DEPT AS D WHERE E.DEPTNO=D.DEPTNO AND  E.COMM1=0;
+SELECT  DISTINCT E.ENAME,D.DNAME,D.LOC FROM EMP AS E,DEPT AS D WHERE E.DEPTNO=D.DEPTNO AND  E.COM!1=0;
+SELECT  DISTINCT E.ENAME,D.DNAME,D.LOC FROM EMP AS E,DEPT AS D WHERE E.DEPTNO=D.DEPTNO AND  E.COMM!=0;
+SELECT  DISTINCT E.ENAME,D.DNAME,D.LOC FROM EMP AS E,DEPT AS D WHERE E.DEPTNO=D.DEPTNO AND  E.ENAME LIKE '%A%';
+SELECT  E.ENAME,E.JOB,E.DEPTNO,D.DNAME,D.LOC FROM EMP AS E,DEPT AS D WHERE E.DEPTNO=D.DEPTNO AND  D.LOC='DALLAS'';
+;
+SELECT  E.ENAME,E.JOB,E.DEPTNO,D.DNAME,D.LOC FROM EMP AS E,DEPT AS D WHERE E.DEPTNO=D.DEPTNO AND  D.LOC='DALLAS';
+use BANK;
+SELECT  E.ENAME,E.JOB,E.DEPTNO,D.DNAME,D.LOC FROM EMP AS E,DEPT AS D WHERE E.DEPTNO=D.DEPTNO AND  D.LOC='DALLAS';
+SELECT  E.ENAME,E.JOB,E.DEPTNO,D.DNAME FROM EMP AS E,DEPT AS D WHERE E.DEPTNO=D.DEPTNO AND  D.LOC='DALLAS';
+SELECT  E.ENAME AS EMPLOYEE,D.ENAME AS MANAGER FROM EMP AS E,EMP AS D WHERE E.MGR=D.EMPNO ;
+SELECT  E.ENAME AS EMPLOYEE,D.ENAME AS MANAGER FROM EMP AS E,EMP AS D WHERE E.MGR=D.EMPNO OR (E.MGR=0 AND D.MGR=0) ;
+SELECT  D.ENAME AS EMPLOYEE FROM EMP AS E,EMP AS D WHERE E.ENAME='SCOTT' AND E.DEPTNO = D.DEPTNO;
+SELECT  D.ENAME AS EMPLOYEE,D.HIREDATE AS DATE FROM EMP AS E,EMP AS D WHERE E.ENAME='BLAKE' AND E.HIREDATE<M.HIREDATE;
+SELECT  D.ENAME AS EMPLOYEE,D.HIREDATE AS DATE FROM EMP AS E,EMP AS D WHERE E.ENAME='BLAKE' AND E.HIREDATE<D.HIREDATE;
+SELECT  E.ENAME AS EMPLOYEE,E.HIREDATE AS DATE,D.ENAME AS MANAGER,D.HIREDATE AS DATE FROM EMP AS E,EMP AS D WHERE E.MGR=D.EMPNO AND E.HIREDATE<D.HIREDATE;
+use imdb
+select p.title,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'Catch me if you%' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 100;;
+show tables;
+select p.title,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'Catch me if you%' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10;
+select distinct p.title,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'Catch me if you%' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 100;
+select distinct p.title,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'Catch me if you%' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10;
+select distinct p.title,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'Catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10;
+select movie_info.info,aka_title.title from aka_title,movie_info where movie_info.movie_id=aka_title.movie_id and aka_title.title like 'Catch%';
+select distinct p.title,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'Catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10;
+use imdb
+select distinct p.title,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'Catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10;
+select distinct p.title,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'Catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 100;
+select distinct p.title,pm.info,count(pm.info),q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'Catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 100;
+select distinct p.title,pm.info,count(pm.info),q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'Catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10;
+select distinct p.title,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'Catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10;
+select distinct p.title,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'Catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id group by p.title limit 10;
+select distinct p.title as movie,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'Catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id group by movie limit 10;
+select p.title as movie,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'Catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10;
+select distinct p.title as movie,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'Catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10;
+select distinct p.title as movie,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'ddlj' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10;
+select distinct p.title as movie,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sholey' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10;
+select distinct p.title as movie,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like '%sholey%' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10;
+select distinct p.title as movie,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like '%sholay%' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10;
+select distinct p.title as movie,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sholay' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10;
+select distinct p.title as movie,count(movie),pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sholay' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10;
+select distinct p.title as movie,count(p.title),pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sholay' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10;
+select distinct p.title as movie,count(*),pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sholay' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10;
+select distinct p.title as movie,count(*),pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sholay' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id group by movie order by count desc limit 10;
+select distinct p.title as movie,count(*) as count,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sholay' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id group by movie order by count desc limit 10;
+select count(*) from
+(select distinct p.title as movie,pm.info,q.title,qm.info 
+,movie_info as qm, aka_title as p,movie_info as pm 
+.title like 'catch me if you can' 
+d q.movie_id = qm.movie_id 
+d qm.info = pm.info 
+d pm.movie_id = p.movie_id 
+10);
+select count(*) from (select distinct p.title as movie,pm.info,q.title,qm.info  ,movie_info as qm, aka_title as p,movie_info as pm  .title like 'catch me if you can'  d q.movie_id = qm.movie_id  d qm.info = pm.info  d pm.movie_id = p.movie_id  10);
+select count(*) from (select distinct p.title as movie,pm.info,q.title,qm.info  ,movie_info as qm, aka_title as p,movie_info as pm  .title like 'catch me if you can'  d q.movie_id = qm.movie_id  d qm.info = pm.info  d pm.movie_id = p.movie_id  10) as i;
+select count(*) from (select distinct p.title as movie,pm.info,q.title,qm.info  ,movie_info as qm, aka_title as p,movie_info as pm  .title like 'catch me if you can'  d q.movie_id = qm.movie_id  d qm.info = pm.info  d pm.movie_id = p.movie_id  10) ;
+select count(*) from (select distinct p.title as movie,pm.info,q.title,qm.info  ,movie_info as qm, aka_title as p,movie_info as pm  .title like 'catch me if you can'  d q.movie_id = qm.movie_id  d qm.info = pm.info  d pm.movie_id = p.movie_id  10);
+select count(*) from (select distinct p.title as movie,pm.info,q.title,qm.info  ,movie_info as qm, aka_title as p,movie_info as pm.title like 'catch me if you can' and q.movie_id = qm.movie_id  and qm.info = pm.info  and pm.movie_id = p.movie_id  10);
+select count(*) from
+(select distinct p.title as movie,pm.info,q.title,qm.info 
+,movie_info as qm, aka_title as p,movie_info as pm 
+.title like 'catch me if you can' 
+d q.movie_id = qm.movie_id 
+d qm.info = pm.info 
+d pm.movie_id = p.movie_id 
+10);
+select count(*) from (select distinct p.title as movie,pm.info,q.title,qm.info  ,movie_info as qm, aka_title as p,movie_info as pm  .title like 'catch me if you can'  d q.movie_id = qm.movie_id  d qm.info = pm.info  d pm.movie_id = p.movie_id  10);
+select count(*) from(select distinct p.title as movie,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id  group by movie limit 10);
+select count(*) from(select distinct p.title as movie,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id  group by movie limit 10) as e;
+select count(movie) from(select distinct p.title as movie,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id  group by movie limit 10) as e;
+select count(movie) from(select distinct p.title as movie,pm.info as Minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id  group by movie limit 10) as e;
+select count(movie) from(select distinct p.title as movie,pm.info as Minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id  limit 10) as e;
+select count(movie) from(select distinct p.title as movie,pm.info as Minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id  group by movie limit 10) as e;
+select count(*) from(select distinct top 10 p.title as movie,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id  group by movie;
+select count(*),top 10 movie from(select distinct p.title as movie,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id  group by movie);
+select count(*),top 10 * from(select distinct p.title as movie,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id  group by movie);
+select count(*) from(select distinct p.title as movie,pm.info,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10) as e group by movie;
+select count(*) from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10) as e group by movie;
+select count(*),movie,minfo from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10) as e group by movie;
+select count(*),movie,minfo from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 100) as e group by movie;
+select count(*),movie,minfo from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 100) as e;
+select movie,minfo from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 100) as e;
+select count(*),movie,minfo from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 100) as e group by minfo;
+select count(*),movie,minfo from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sholay' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 100) as e group by minfo;
+select count(*),movie,minfo from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sholay' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 100) as e group by minfo,movie;
+select count(*) as count,movie,minfo from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sholay' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 100) as e group by movie order by count desc ;
+select count(*) as count,movie,minfo from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sholay' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 1000) as e where count>2 group by movie order by count des;
+select count(*) as count,movie,minfo from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sholay' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 1000) as e where count>2 group by movie order by count desc;
+select count(*) as count,movie,minfo from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sholay' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 1000) as e where count(*)>2 group by movie order by count desc;
+select count(*) as count,movie,minfo from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sholay' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 1000) as e where count=2 group by movie order by count desc;
+select count(*) as count,movie,minfo from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sholay' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 1000) as e  group by movie order by count desc having count>3;
+select count(*) as count,movie,minfo from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sholay' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 1000) as e  group by movie order by count desc where count>2;
+select count(*) as count,movie,minfo from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sholay' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 1000) as e  group by movie order by count desc;
+select count(*) as count,movie,minfo from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sholay' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 1000) as e  group by movie order by count desc top 50;
+select count(*) as count,movie,minfo from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sholay' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 1000) as e  group by movie order by count desc limit 10;
+select count(*) as count,movie from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sholay' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 1000) as e  group by movie order by count desc limit 10;
+select count(*) as count,movie from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sholay' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10000) as e  group by movie order by count desc limit 10;
+select count(*) as count,movie from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'catch me if you can' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10000) as e  group by movie order by count desc limit 10;
+select count(*) as count,movie from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'dil toh pagal hai' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10000) as e  group by movie order by count desc limit 10;
+select count(*) as count,movie from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like '%dil toh%' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10000) as e  group by movie order by count desc limit 10;
+select count(*) as count,movie from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like '%dil%' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10000) as e  group by movie order by count desc limit 10;
+use imdb
+select count(*) as count,movie from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sholay' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10000) as e  group by movie order by count desc limit 10;
+select count(*) as count,movie from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'bucket list' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10000) as e  group by movie order by count desc limit 10;
+select count(*) as count,movie from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like '%bucket list' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10000) as e  group by movie order by count desc limit 10;
+select count(*) as count,movie from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like '%good will hunting' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10000) as e  group by movie order by count desc limit 10;
+select count(*) as count,movie from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'good will hunting' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10000) as e  group by movie order by count desc limit 10;
+select count(*) as count,movie from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title ='good will hunting' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10000) as e  group by movie order by count desc limit 10;
+select count(*) as count,movie from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like '%good will%' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10000) as e  group by movie order by count desc limit 10;
+select count(*) as count,movie,q.title from(select distinct p.title as movie,pm.info as minfo,q.title,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sherlock' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10000) as e  group by movie order by count desc limit 10;
+select count(*) as count,movie,given from(select distinct p.title as movie,pm.info as minfo,q.title as given,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sherlock' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 10000) as e  group by movie order by count desc limit 10;
+select count(*) as count,movie,given from(select distinct p.title as movie,pm.info as minfo,q.title as given,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'sherlock' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 100000) as e  group by movie order by count desc limit 10;
+use imdb
+select count(*) as count,movie,given from(select distinct p.title as movie,pm.info as minfo,q.title as given,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like 'jurassic world' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 100000) as e  group by movie order by count desc limit 10;
+select count(*) as count,movie,given from(select distinct p.title as movie,pm.info as minfo,q.title as given,qm.info from aka_title as q,movie_info as qm, aka_title as p,movie_info as pm where q.title like '%jurassic world%]' and q.movie_id = qm.movie_id and qm.info = pm.info and pm.movie_id = p.movie_id limit 100000) as e  group by movie order by count desc limit 10;
+show databases
+;
+use BANK
+show tables;
+use industry 
+show tables
+;
+INSERT INTO CLIENT VALUES(C00007,AKSHAT,KOTA,324005,RAJASTHAN,0);
+INSERT INTO CLIENT VALUES("C00007","AKSHAT","KOTA",324005,"RAJASTHAN",0);
+SELECT * FROM CLIENT;
+INSERT INTO SALES VALUES("O19006","C00007",2015-07-20,"S00004",2015-08-30,"CANCELLED");
+SELECT * FROM SALES;
+DELETE FROM SALES WHERE OrderNO="O19006";
+INSERT INTO SALES VALUES("O19006","C00007","2015-07-20","S00004","2015-08-30","CANCELLED");
+SELECT * FROM SALES;
+create table salesDetails(orderNo varchar(6), productNo varchar(6), qtyOrder int(8), qtyDisplay int(8), productRate float(10,2));
+LOAD LOCAL INFILE FROM "/home/akshat/Downloads/salesdetails.txt"INTO salesDetails;
+LOAD DATA LOCAL INFILE FROM "/home/akshat/Downloads/salesdetails.txt"INTO salesDetails;
+LOAD DATA LOCAL INFILE "/home/akshat/Downloads/salesdetails.txt" INTO salesDetails;
+LOAD DATA LOCAL INFILE "/home/akshat/Downloads/salesdetails.txt" INTO table salesDetails;
+LOAD DATA LOCAL INFILE "/home/akshat/Downloads/salesdetail.txt" INTO table salesDetails;
+exi
+;
+CREATE DATABASE movielens
+;
+use movielens
+create table data
+(uid int(4),
+mid int(5),
+rating int(2),
+t_stamp int(10));
+create table data (uid int(4), mid int(5), rating int(2), t_stamp int(10));
+create table user
+(uid int(4),
+age int(3),
+gender varchar(2),
+occupation varchar(20),
+zip int(6));
+create table user (uid int(4), age int(3), gender varchar(2), occupation varchar(20), zip int(6));
+create tablle movie
+(mid int(5),
+title varchar(40),
+release_d date,
+video_r_d date,
+imdb_url varchar(100),
+unknown bool,
+action bool,
+adventure bool,
+animation,
+;
+create tablle movie (mid int(5), title varchar(40), release_d date, video_r_d date, imdb_url varchar(100), unknown bool, action bool, adventure bool, animation,;
+create tablle movie (mid int(5), title varchar(40), release_d date, video_r_d date, imdb_url varchar(100), unknown bool, action bool, adventure bool, animation bool
+,childrens bool,
+comedy bool,
+crime bool,
+documentry bool,
+drama bool,
+fantasy bool,
+film_noir bool,
+horror bool,
+musical bool,
+mystery bool,
+romance bool,
+sci_fi bool,
+thriller bool,
+war bool,
+western bool);
+create tablle movie (mid int(5), title varchar(40), release_d date, video_r_d date, imdb_url varchar(100), unknown bool, action bool, adventure bool, animation bool ,childrens bool, comedy bool, crime bool, documentry bool, drama bool, fantasy bool, film_noir bool,  horror bool, musical bool, mystery bool, romance bool, sci_fi bool, thriller bool, war bool, western bool);
+create table movie (mid int(5), title varchar(40), release_d date, video_r_d date, imdb_url varchar(100), unknown bool, action bool, adventure bool, animation bool ,childrens bool, comedy bool, crime bool, documentry bool, drama bool, fantasy bool, film_noir bool,  horror bool, musical bool, mystery bool, romance bool, sci_fi bool, thriller bool, war bool, western bool);
+show tables;
+alter table data
+;
+alter table movie
+add primary key (mid);
+alter table movie add primary key (mid);
+descirbe movie;
+describe moviel
+;
+describe movie;
+alter table user add primary key (uid);
+describe user;
+alter table data
+add foreign key (uid)
+references user(uid);
+alter table data add foreign key (uid) references user(uid);
+alter table data add foreign key (mid) references movie(mid);
+descirbe data;
+describe data;
+load data local infile '/media/akshat/My Passport/node fun/e-books/My_Project/Recommendation system/Implementation/Colloborative filtering/ml-100k/DATA used/u.user/ into user;
+'
+;
+load data local infile '/media/akshat/My Passport/node fun/e-books/My_Project/Recommendation system/Implementation/Colloborative filtering/ml-100k/DATA used/u.user/ into user;
+';
+load data local infile '/media/akshat/My Passport/node fun/e-books/My_Project/Recommendation system/Implementation/Colloborative filtering/ml-100k/DATA used/u.user/' into user;
+load data local infile '/media/akshat/My Passport/node fun/e-books/My_Project/Recommendation system/Implementation/Colloborative filtering/ml-100k/DATA used/u.user/' into table user;
+load data local infile '/media/akshat/My Passport/node fun/e-books/My_Project/Recommendation system/Implementation/Colloborative filtering/ml-100k/DATA used/u.user' into table user;
+select * from user limit 100;
+delete user;
+delete from user;
+load data local infile '/media/akshat/My Passport/node fun/e-books/My_Project/Recommendation system/Implementation/Colloborative filtering/ml-100k/DATA used/u.user' into table user
+field terminated by '|'
+lines  terminated by '\n';
+load data local infile '/media/akshat/My Passport/node fun/e-books/My_Project/Recommendation system/Implementation/Colloborative filtering/ml-100k/DATA used/u.user' into table user field terminated by '|' lines  terminated by '\n';
+load data local infile '/media/akshat/My Passport/node fun/e-books/My_Project/Recommendation system/Implementation/Colloborative filtering/ml-100k/DATA used/u.user' into table user fields terminated by '|' lines  terminated by '\n';
+load data local infile '/media/akshat/My Passport/node fun/e-books/My_Project/Recommendation system/Implementation/Colloborative filtering/ml-100k/DATA used/u.item' into table movie fields terminated by '|' lines  terminated by '\n';
+delete from movie;
+load data local infile '/media/akshat/My Passport/node fun/e-books/My_Project/Recommendation system/Implementation/Colloborative filtering/ml-100k/DATA used/u.item' into table movie fields terminated by '|' lines  terminated by '\n'
+SET video_r_d = STR_TO_DATE(video_r_d,'%d-%b-%Y')
+SET release_d = STR_TO_DATE(release_d,'%d-%b-%Y');
+load data local infile '/media/akshat/My Passport/node fun/e-books/My_Project/Recommendation system/Implementation/Colloborative filtering/ml-100k/DATA used/u.item' into table movie fields terminated by '|' lines  terminated by '\n' SET video_r_d = STR_TO_DATE(video_r_d,'%d-%b-%Y') SET release_d = STR_TO_DATE(release_d,'%d-%b-%Y');
+descirbe movie;
+describe movie;
+load data local infile '/media/akshat/My Passport/node fun/e-books/My_Project/Recommendation system/Implementation/Colloborative filtering/ml-100k/DATA used/u.item' into table movie fields terminated by '|' lines  terminated by '\n' SET video_r_d = STR_TO_DATE(video_r_d,'%d-%b-%Y') SET release_d = STR_TO_DATE(release_d,'%d-%b-%Y')
+use industry
+select description from PRODUCT;
+select description from (select p.description from PRODUCT as p) as pd,(select distinct description from salesDetails as sd join PRODUCT on product_no = productNo) as sp having sp.desription!=p.description;
+select p.description from (select p.description from PRODUCT as p) as pd,(select distinct description from salesDetails as sd join PRODUCT on product_no = productNo) as sp where sp.desription!=p.description;
+select pd.description from (select description from PRODUCT as p) as pd,(select distinct description from salesDetails as sd join PRODUCT on product_no = productNo) as sp where sp.desription!=p.description;
+select pd.description from (select description from PRODUCT as p) as pd,(select distinct description from salesDetails join PRODUCT on product_no = productNo) as sp where sp.desription!=p.description;
+select pd.description from (select description from PRODUCT as p) as pd,(select distinct description from salesDetails join PRODUCT on product_no = productNo) as sp where desription!=p.description;
+select pd.description from (select description from PRODUCT as p) as pd,(select distinct description from salesDetails join PRODUCT on product_no = productNo) as sp where sp.desription!=p.description;
+select pd.description from (select description from PRODUCT as p) as pd,(select distinct description from salesDetails join PRODUCT on product_no = productNo) as sp where p.desription!=sp.description;
+select pd.description from (select description from PRODUCT as p) as pd,(select distinct description from salesDetails join PRODUCT on product_no = productNo) as sp where pd.desription!=sp.description;
+select pd.description from (select description from PRODUCT as p) as pd,(select distinct description from salesDetails join PRODUCT on product_no = productNo) as sp where pd.desription==sp.description;
+select pd.description from (select description from PRODUCT as p) as pd,(select distinct description from salesDetails join PRODUCT on product_no = productNo) as sp where pd.desription=sp.description;
+select dp from (select description as dp from PRODUCT as p) as pd,(select distinct description as d from salesDetails join PRODUCT on product_no = productNo) as sp where dp!=d;
+select d from (select description as dp from PRODUCT as p) as pd,(select distinct description as d from salesDetails join PRODUCT on product_no = productNo) as sp where dp!=d;
+select d from (select description as dp,product_no as pnp from PRODUCT as p) as pd,(select distinct description as d,productNo as pns from salesDetails join PRODUCT on product_no = productNo) as sp where dp!=d and pnp=pns;
+select d from (select description as dp,product_no as pnp from PRODUCT as p) as pd,(select distinct description as d,productNo as pns from salesDetails join PRODUCT on product_no = productNo) as sp where pnp=pns;
+select desciprtion from salesDetails join PRODUCT on product_no=productNo;
+select description from salesDetails join PRODUCT on product_no=productNo;
+select distinct description from salesDetails join PRODUCT on product_no=productNo;
+select distinct description from salesDetails left join PRODUCT on product_no=productNo having description=null;
+select distinct description from salesDetails left join PRODUCT on product_no=productNo having productNo=null;
+select distinct description from salesDetails left join PRODUCT as p on product_no=productNo having p.productNo=null;
+select distinct description from salesDetails left join PRODUCT as p on product_no=productNo having PRODUCT.productNo=null;
+select distinct description from salesDetails as sd left join PRODUCT as p on sd.product_no=productNo where p.product_no=null;
+select distinct description from salesDetails as sd left join PRODUCT as p on p.product_no=productNo where p.product_no=null;
+select distinct description from salesDetails as sd left join PRODUCT as p on p.product_no=productNo where sp.productNo=null;
+select distinct description from salesDetails as sd left join PRODUCT as p on p.product_no=sp.productNo where sp.productNo=null;
+select distinct description from salesDetails as sd left join PRODUCT as p on p.product_no=sp.productNo where sp.productNo=NULL;
+select description from salesDetails as sd left join PRODUCT as p on p.product_no=sp.productNo where =NULL;
+select description from salesDetails as sd left join PRODUCT as p on p.product_no=sp.productNo where=NULL;
+select description from salesDetails as sd left join PRODUCT as p on p.product_no=sp.productNo where='NULL';
+select description from salesDetails as sd left join PRODUCT as p on p.product_no=sp.productNo where productNo='NULL';
+select description from salesDetails as sd left join PRODUCT as p on p.product_no=productNo where productNo='NULL';
+select description from PRODUCT as p left join salesDetails as sd on p.product_no=productNo where productNo='NULL';
+select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo where productNo='NULL';
+select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo;
+select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo where productNo=NULL;
+select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo as t t.productNo=NULL;
+select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo as t productNo=NULL;
+select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo having productNo=NULL;
+select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo having orderNo=NULL;
+select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo having orderNo='NULL';
+select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo having orderNo=NULL;
+select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo
+;
+select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo and productNo=NULL
+;
+select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo and productNo=NULL;
+select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo;
+select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo and orderNo=NULL;
+select * (select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo);
+select * (select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo) as p;
+select * from (select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo) as p;
+select * from (select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo) as ps ps.orderNo=NULL;
+select * from (select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo) as ps where ps.orderNo=NULL;
+select * from (select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo) as ps;
+select * from (select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo) as ps where orderNo=NULL;
+select * from (select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo) as ps where orderNo='NULL';
+select * from (select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo) as ps where orderNo=0;
+select * from (select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo) as ps where orderNo!=0;
+select * from (select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo) as ps where orderNo=1;
+select * from (select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo) as ps where orderNo='1';
+select * from (select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo) as ps where 1;
+select * from (select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo) as ps where qtyDisplay=NULL;
+s from (select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo) as ps where qtyDisplay is null;
+select * from PRODUCT as p left join salesDetails as sd on p.product_no=productNo where  orderNo is NULL;
+select description from PRODUCT as p left join salesDetails as sd on p.product_no=productNo where orderNo is NULL;
+select product_no,description from PRODUCT as p left join salesDetails as sd on p.product_no=productNo where orderNo is NULL;
+select name from salesDetails join SALES on orderNo=OrderNO;
+select name from salesDetails join SALES on orderNo=OrderNO join CLIENT on client_no=ClientNO;
+select name from salesDetails join SALES as s on orderNo=s.OrderNO join CLIENT on client_no=ClientNO;
+select name from salesDetails as sd join SALES as s on sd.orderNo=s.OrderNO join CLIENT on client_no=ClientNO;
+select name from salesDetails as sd join SALES as s on sd.orderNo=s.OrderNO join CLIENT on client_no=ClientNO join PRODUCT on product_no=productNo;
+select name from salesDetails as sd join SALES as s on sd.orderNo=s.OrderNO join CLIENT on client_no=ClientNO join PRODUCT on product_no=productNo and description='PULL OVER';
+select name from salesDetails as sd join SALES as s on sd.orderNo=s.OrderNO join CLIENT on client_no=ClientNO join PRODUCT on product_no=productNo and description like 'PULL%';
+select name from salesDetails as sd join SALES as s on sd.orderNo=s.OrderNO join CLIENT on client_no=ClientNO join PRODUCT on product_no=productNo and description like 'PULL%' and qtyOrder<5;
+select * from (select name from salesDetails as sd join SALES as s on sd.orderNo=s.OrderNO join CLIENT on client_no=ClientNO join PRODUCT on product_no=productNo and description like 'PULL%' and qtyOrder<5) as na join (select * from salesDetails as sd join SALES as s on sd.orderNo=s.OrderNO join PRODUCT on product_no=productNo join CLIENT on client_no = ClientNO) as or on na.name=or.name;
+select * from (select name from salesDetails as sd join SALES as s on sd.orderNo=s.OrderNO join CLIENT on client_no=ClientNO join PRODUCT on product_no=productNo and description like 'PULL%' and qtyOrder<5) as na join (select * from salesDetails as sd join SALES as s on sd.orderNo=s.OrderNO join PRODUCT on product_no=productNo join CLIENT on client_no = ClientNO) as orde on na.name=orde.name;
+select * from (select name from salesDetails as sd join SALES as s on sd.orderNo=s.OrderNO join CLIENT on client_no=ClientNO join PRODUCT on product_no=productNo and description like 'PULL%' and qtyOrder<5) as na join (select product_no,name,orderNo from salesDetails as sd join SALES as s on sd.orderNo=s.OrderNO join PRODUCT on product_no=productNo join CLIENT on client_no = ClientNO) as orde on na.name=orde.name;
+select * from (select name from salesDetails as sd join SALES as s on sd.orderNo=s.OrderNO join CLIENT on client_no=ClientNO join PRODUCT on product_no=productNo and description like 'PULL%' and qtyOrder<5) as na join (select product_no,name,sd.orderNo from salesDetails as sd join SALES as s on sd.orderNo=s.OrderNO join PRODUCT on product_no=productNo join CLIENT on client_no = ClientNO) as orde on na.name=orde.name;
+select name,product_no,orderNo from (select name from salesDetails as sd join SALES as s on sd.orderNo=s.OrderNO join CLIENT on client_no=ClientNO join PRODUCT on product_no=productNo and description like 'PULL%' and qtyOrder<5) as na join (select product_no,name,sd.orderNo from salesDetails as sd join SALES as s on sd.orderNo=s.OrderNO join PRODUCT on product_no=productNo join CLIENT on client_no = ClientNO) as orde on na.name=orde.name;
+select na.name,product_no,orderNo from (select name from salesDetails as sd join SALES as s on sd.orderNo=s.OrderNO join CLIENT on client_no=ClientNO join PRODUCT on product_no=productNo and description like 'PULL%' and qtyOrder<5) as na join (select product_no,name,sd.orderNo from salesDetails as sd join SALES as s on sd.orderNo=s.OrderNO join PRODUCT on product_no=productNo join CLIENT on client_no = ClientNO) as orde on na.name=orde.name;
+select name,description,qtyOrder from salesDetails join SALES on orderNO=OrderNO;
+select name,description,qtyOrder from salesDetails join SALES on orderNO=OrderNO join CLIENT on client_no=ClientNO;
+select name,description,qtyOrder from salesDetails join SALES on orderNO=OrderNO join CLIENT on client_no=ClientNO join PRODUCT on product_no=productNo;
+select name,description,qtyOrder from salesDetails join SALES as s on orderNo=OrderNO join CLIENT on client_no=ClientNO join PRODUCT on product_no=productNo;
+select name,description,qtyOrder from salesDetails join SALES as s on orderNo=s.OrderNO join CLIENT on client_no=ClientNO join PRODUCT on product_no=productNo;
+select name,description,qtyOrder from salesDetails as sd join SALES as s on sd.orderNo=s.OrderNO join CLIENT on client_no=ClientNO join PRODUCT on product_no=productNo;
+select name,product_no,description,qtyOrder from salesDetails as sd join SALES as s on sd.orderNo=s.OrderNO join CLIENT on client_no=ClientNO join PRODUCT on product_no=productNo;
+select name,product_no,description,qtyOrder from salesDetails as sd join SALES as s on sd.orderNo=s.OrderNO join CLIENT on client_no=ClientNO join PRODUCT on product_no=productNo and productRate<1500;
+select name,avg(qtyOrder) from salesDetails as sd join SALES as s on sd.orderNo=s.OrderNO join CLIENT on client_no=ClientNO join PRODUCT on product_no=productNo and productRate<1500 group by name;
+select description,avg(qtyOrder) from salesDetails as sd join SALES as s on sd.orderNo=s.OrderNO join CLIENT on client_no=ClientNO join PRODUCT on product_no=productNo and productRate<1500 group by description;
+show databases;
+use shop
+show tables;
+use BANK
+show tables
+;
+describe EMP;
+select ENAME from EMP wher job like ('_nalyst',''salesman);
+select ENAME from EMP wher job=('analyst','salesman');
+select ENAME from EMP where job=('analyst','salesman');
+select * from EMP;
+select ENAME from EMP where job=('ANALYST','sALESMAN');
+select ENAME from EMP where job=['ANALYST','sALESMAN'];
+select ENAME from EMP where job={'ANALYST','sALESMAN'};
+select ENAME from EMP where job is ('ANALYST','sALESMAN');
+select ENAME from EMP where job lke ('ANALYST','sALESMAN');
+select ENAME from EMP where job like ('ANALYST','sALESMAN');
+select ENAME from EMP where job like 'ANALYST';
+select ENAME from EMP where job IN ('ANALYST','sALESMAN');
+select * from EMP;
+select * from EMP where HIREDATE<'1981-09-30';
+select ENAME from EMP where job!='MANAGER';
+select ENAME from EMP where empNo in ('7369','7521','7839','7934','7788');
+select ENAME from EMP where DEPTNO not in ('40','30','10');
+select ENAME from EMP where HIREDATE between '1981-06-30' and '1981-12-31';
+select distinct JOB from EMP;
+select distinct count(JOB) from EMP;
+select count(distinct JOB) from EMP;
+select ENAME,JOB from EMP where manager=0;
+select ENAME,JOB from EMP where manager like null;
+select ENAME,JOB from EMP where MANAGER like null;
+select ENAME,JOB from EMP where MANAGER like NULL;
+select ENAME,JOB from EMP where MGR like NULL;
+select ENAME,JOB from EMP where MGR like 0;
+select max(SAL), min(SAL),avg(SAL) from EMP where MGR like 0;
+select max(SAL), min(SAL),avg(SAL) from EMP ;
+show databases
+;
+CREATE database teacherList
+;
+use teacherList
+Create Table iasTeacherList
+;
+use teacjerList
+use teacherList
+show database;
+show databases;
+use imdb
+show tables;
+show databases;
+use movielens
+show tables;
+select * from data;
+describe datal
+;
+describe data;
+describe movie;
+show databases;
+create database newMovieLens
+;
+use newMovieLensa
+use newMovieLens;
+create table ratings
+{uid varchar(20),
+mid varchar(20),
+use newMovieLensa
+use newMovieLens;
+create table ratings
+{uid int,
+mid int,
+rating int,
+timestamp int}
+;
+create table ratings {uid int, mid int, rating int, timestamp int};
+create table ratings {uid INT, mid INT, rating INT, timestamp INT};
+create table ratings{uid INT, mid INT, rating INT, timestamp INT};
+create table ratings (uid int, mid int, rating int, timestamp int);
+create table movie(mid int, title varchar(30));
+alter table movie
+add primary key(mid);
+alter table movie add primary key(mid);
+alter table ratings add foreign key(mid)
+references movie(mid);
+alter table ratings add foreign key(mid) references movie(mid);
+describe movie;
+describe ratings;
+pid
+;
+cwd;
+load data local infile '/home/akshat/program/Content based recommendation system/hybrid system/ml-latest' into table movie
+lines termintaed by '\r\n'
+use newMovieLens
+load data local infile '/home/akshat/program/Content based recommendation system/hybrid system/ml-latest' into table movie
+lines terminated by '\r\n'
+fields terminated by ',';
+load data local infile '/home/akshat/program/Content based recommendation system/hybrid system/ml-latest' into table movie lines terminated by '\r\n' fields terminated by ',';
+load data local infile '/home/akshat/program/Content based recommendation system/hybrid system/ml-latest' into table movie lines terminated by '\r\n' fields terminated by '\,';
+load data local infile '/home/akshat/program/Content based recommendation system/hybrid system/ml-latest' into table movie lines terminated by '\r\n' fields terminated by ',';
+load data local infile '/home/akshat/program/Content based recommendation system/hybrid system/ml-latest' into table movie fields terminated by ',';
+load data local infile '/home/akshat/program/Content based recommendation system/hybrid system/ml-latest/movies.csv' into table movie fields terminated by ',';
+select * from movie;
+load data local infile '/home/akshat/program/Content based recommendation system/hybrid system/ml-latest/ratings.csv' into table rating fields terminated by ',';
+load data local infile '/home/akshat/program/Content based recommendation system/hybrid system/ml-latest/ratings.csv' into table ratings fields terminated by ',';
+select * from ratings;
+show databases
+;
+drop movielens
+;
+drop database movielens
+;
+show databases;
+SELECT table_schema                                        "DB Name", 
+   Round(Sum(data_length + index_length) / 1024 / 1024, 1) "DB Size in MB" 
+FROM   information_schema.tables 
+GROUP  BY table_schema; 
+SELECT table_schema                                        "DB Name",     Round(Sum(data_length + index_length) / 1024 / 1024, 1) "DB Size in MB"  FROM   information_schema.tables  GROUP  BY table_schema;
+show tables;
+select * from rating limit 100;
+select * from ratings limit 100;
+select * from ratings;
+select * from ratings limit 10000;
+select * from ratings limit 100;
+create table user(uid int,name varchar(20
+),mid int,rating float);
+create table user(uid int,name varchar(20 ),mid int,rating float);
+drop table user;
+create table orating(uid int,mid int,rating float);
+create table user(uid int,name varchar(20),email varchar(30),phoneno int);
+describe movie;
+show tables;
+describe user;
+describe orating;
+alter table user add primary key uid;
+alter user add primary key uid;
+alter user add primary key(uid);
+alter table user add primary key(uid);
+describe user;
+alter user add AUTO_INCREMENT(uid);
+alter table user add AUTO_INCREMENT(uid);
+drop user;
+drop table user;
+create table user(uid int primary key auto_increment,name varchar(20),email varchar(30),phoneno int);
+describe user;
+describe orating;
+insert into user values("askaht","asdfasdf","9665566");
+insert into user (name,email,phoneno) values("askaht","asdfasdf","9665566");
+select * from user;
+trim table user;
+delete from user;
+select * from user;
+alter table user
+add primary key(email);
+alter table user add primary key(email);
+alter table user remove primary key(uid);
+alter table user drop primary key
+;
+alter table user drop primary key;
+ALTER TABLE contacts
+  DROP PRIMARY KEY
+asdas;
+ALTER TABLE contacts   DROP PRIMARY KEY asdas;
+alter table user drop primary key;
+select * from user;
+alter table user alter column phoneno int(20);
+alter table user modify column phoneno int(20);
+alter table user auto_increment = 0;
+select * from user;
+delete from user;
+select * from user;
+describe user;
