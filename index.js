@@ -3,9 +3,9 @@ var express = require('express');
 //var bodyParser = require('body-parser'); FOR POST METHOD
 var app     = express();
 //NPM Module to integrate Handlerbars UI template engine with Express
-
+var server = require('http').Server(app);
 var exphbs  = require('express-handlebars');
-
+var io = require('socket.io').listen(server);
 //defining which user and database to use
 var connection = mysql.createConnection({
   host     : 'localhost',
@@ -115,11 +115,18 @@ app.get('/adduser',function (req,res){
 		});	
 });
 
+//route to give the rating given bu user
+app.get('/rating',function  (req,res){
+	res.sendFile(__dirname + '/index.html');
+});
+
 //route to give the user the movie to rate upon
-app.get('/rating',function (req,res){
+app.get('/rating1',function (req,res){
 	//retriving a random movie to get rating of user id 1;
-	var qury = 'select mid,title from movie order by rand() limit 1';
-	var movieName;
+
+	var movieName = req.query.movieName;
+	var qury = 'select mid,title from movie where title like "'+movieName+'"';
+	
 	
 	connection.query(qury, function(err, rows, fields) {
   		if (!err){
@@ -139,8 +146,10 @@ app.get('/rating',function (req,res){
   	});
 });
 
-//route to give the rating given bu user
-app.get('/addrating',function  (req,res){
+
+
+
+app.get('/addrating',function (req,res){
 	var rating = req.query.rating;
 	console.log(uid + mid + rating);
 	var qury = 'insert into orating values('+uid+','+mid+','+rating+')';//adding rating to the database for the particular uid and mid
@@ -158,13 +167,47 @@ app.get('/addrating',function  (req,res){
   	});
 });
 
+io.on('connection', function(socket){
+  	socket.on('movieName', function(name){
+    
+		console.log("i was here"); 
+		var qury = 'select mid,title from movie where title like "%'+name+'%" order by title limit 10';
+		var movieName;
+		console.log("name"+name);
+		connection.query(qury, function(err, rows, fields) {
+	  		if (!err){
+	  			//res.writeHead(200, {'Content-Type': 'text/html'});
+		  		//console.log(fields); GIVE THE information about the colums
+		  		for(value in rows){
+		  			console.log(rows[value].title);
+		  			mid = rows[value].mid;
+		  			movieName = rows[value].title;
+		  			var movie = {
+		  				movieName : movieName,
+		  				mid : mid
+		  			}
+		  			io.emit('movieName', movie);
+		  			//res.write(movieName);
+		  		}
+	  		}
+	    	
+	 		else
+	 		{	
+	    		console.log('Error while performing Query.');
+	    		//res.render('option',{message : "problem with rating link",recomm : "http://127.0.0.1/collaborative_filtering/collab_filter.php?uid="+uid});
+	  		}
+	  	});
+    });
+});
+
+
 app.get('/*',function (req,res){
 	res.sendStatus("dont just put anything after the link follow the link dont make your own links!");
 });
 
-app.listen(8080, function() {
-  console.log('Server running at http://127.0.0.1:8080/');
-});
+server.listen(3000, function () {
+     console.log("Express server listening on port " + 3000);
+ });
 
 
 /*
