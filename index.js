@@ -125,7 +125,8 @@ app.get('/rating1',function (req,res){
 	//retriving a random movie to get rating of user id 1;
 
 	var movieName = req.query.movieName;
-	var qury = 'select mid,title from movie where title like "'+movieName+'"';
+	console.log(movieName);
+	var qury = "select mid,title from movie where title like '"+movieName+"'";
 	
 	
 	connection.query(qury, function(err, rows, fields) {
@@ -140,6 +141,7 @@ app.get('/rating1',function (req,res){
     	
  		else
  		{	
+ 			console.log(err);
     		console.log('Error while performing Query.');
     		res.render('option',{message : "problem with rating link",recomm : "http://127.0.0.1/collaborative_filtering/collab_filter.php?uid="+uid});
   		}
@@ -170,16 +172,15 @@ app.get('/addrating',function (req,res){
 io.on('connection', function(socket){
   	socket.on('movieName', function(name){
     
-		console.log("i was here"); 
+		 
 		var qury = 'select mid,title from movie where title like "%'+name+'%" order by title limit 10';
 		var movieName;
-		console.log("name"+name);
 		connection.query(qury, function(err, rows, fields) {
 	  		if (!err){
 	  			//res.writeHead(200, {'Content-Type': 'text/html'});
 		  		//console.log(fields); GIVE THE information about the colums
 		  		for(value in rows){
-		  			console.log(rows[value].title);
+		  			
 		  			mid = rows[value].mid;
 		  			movieName = rows[value].title;
 		  			var movie = {
