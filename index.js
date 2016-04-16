@@ -6,6 +6,7 @@ var app     = express();
 var server = require('http').Server(app);
 var exphbs  = require('express-handlebars');
 var io = require('socket.io').listen(server);
+
 //defining which user and database to use
 var connection = mysql.createConnection({
   host     : 'localhost',
@@ -14,7 +15,8 @@ var connection = mysql.createConnection({
   database : 'newMovieLens'
 });
 
-var uid,mid;//user id and movie id
+//user id and movie id
+var uid,mid;
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -29,12 +31,14 @@ if(!err) {
 
 //will show you the login page
 app.get('/',function  (req,res) {
-	res.render('login');
+	res.sendFile(__dirname + '/views/login.html');
 });
+
 
 //will process the login information
 app.get('/login',function (req,res){
 	uid = req.query.uid;
+	console.log(uid);
 	var qury = 'select count(*) as exist from user where uid='+uid;
 	connection.query(qury, function(err, rows, fields) {
   		if (!err){
@@ -47,16 +51,20 @@ app.get('/login',function (req,res){
 		  		}
 		  		else
 		  		{
+		  			//have to be changes to html page
 		  			res.render('option',{recomm : "http://127.0.0.1/collaborative_filtering/collab_filter.php?uid="+uid});
 		  		}
 		  	}
   		}
     	
  		else
-    	console.log('Error while performing Query.');
-  		
+    	{
+    		console.log(err);
+    		console.log('Error while performing Query.');
+  		}
   	});
 });
+
 
 //will give the register page
 app.get('/register',function (req,res){
@@ -117,7 +125,7 @@ app.get('/adduser',function (req,res){
 
 //route to give the rating given bu user
 app.get('/rating',function  (req,res){
-	res.sendFile(__dirname + '/index.html');
+	res.sendFile(__dirname + '/views/rating.html');
 });
 
 //route to give the user the movie to rate upon
@@ -162,12 +170,18 @@ app.get('/addrating',function (req,res){
   		}
  		else
     	{
+    		console.log(err);
     		console.log('Error while performing Query.');
-    		res.render('option',{message : "try again",recomm : "http://127.0.0.1/collaborative_filtering/collab_filter.php?uid="+uid});
+    		res.render('option',{message : "messageovie already rated",recomm : "http://127.0.0.1/collaborative_filtering/collab_filter.php?uid="+uid});
     	}
   		
   	});
 });
+
+
+app.get('/option',function (req,res){
+	res.render('option',{message : "messageovie already rated",recomm : "http://127.0.0.1/collaborative_filtering/collab_filter.php?uid="+uid});
+})
 
 io.on('connection', function(socket){
   	socket.on('movieName', function(name){
@@ -208,8 +222,7 @@ app.get('/*',function (req,res){
 
 server.listen(3000, function () {
      console.log("Express server listening on port " + 3000);
- });
-
+});
 
 /*
 //will give you the recommendaton

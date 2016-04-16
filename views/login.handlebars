@@ -1,11 +1,12 @@
-
-<h1> Logins </h1>
-<form action='/login' method="get">
-        <fieldset>
+<h1> Login </h1>
+<div id="login">
+<form action='' method="get" id="login">
             <label for="uid">user id:</label>
-            <input type="text" id="uid" name="uid" placeholder="enter your userid" autofocus="on"/>
-            <input type="submit" value="let the recommendation begin" />
-        </fieldset>
+            <input type="text" id="uid" name="uid" placeholder="enter your userid" autofocus="on" />
+            <input id ="submit" type="submit" value="log in" onclick="formget()" />
 </form>
-<h2> {{message}}</h2>
-<h2><a href="/register"> register</a></h2>
+</div>
+
+<h2 id='message'> {{message}}</h2>
+
+<h2><a href="/register"> Register</a></h2>

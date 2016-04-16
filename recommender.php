@@ -1,6 +1,6 @@
 
 <?php
-
+header("Access-Control-Allow-Origin: *");
 $dbhost = 'localhost';
 $dbuser = 'root';
 $dbpass = 'tannugoyalU';
@@ -15,7 +15,7 @@ mysql_select_db('newMovieLens');
 //change the uid to accept the uid from nodejs
 $uid = $_GET['uid'];
 //select rated movies from user database created locally
-$sql = 'select mid,rating from orating where uid='.$uid.;//retriving rated movies by user in the database created locally
+$sql = 'select mid,rating from orating where uid='.$uid;//retriving rated movies by user in the database created locally
 $retval = mysql_query( $sql, $conn );
 if(! $retval )
 {
@@ -33,7 +33,7 @@ while($rated = mysql_fetch_array($retval, MYSQL_ASSOC))
 	$urRatedM .= $rated['mid'].",";
 
 	//getting avg for the user rated movies
-	$avgq = 'select avg(rating) as avg from newRating where mid='.$rated['mid'].' order by rand() limit 1000';
+	$avgq = 'select avg(rating) as avg from newRating where mid='.$rated['mid'].' order by rand() limit 100';
 	$r = mysql_query( $avgq, $conn );
 	$i =  mysql_fetch_array($r, MYSQL_ASSOC);
 	$avgR += $i['avg'];
@@ -46,7 +46,7 @@ $urRatedM = substr($urRatedM, 0, -1);
 
 //getting random movies that the user didnt rated
 
-$umovie = 'select mid,title from movie where mid not in ('.$urRatedM.') order by rand() limit 20';
+$umovie = 'select mid,title from movie where mid not in ('.$urRatedM.') order by rand() limit 10';
 $retval = mysql_query( $umovie, $conn );
 if(!$retval){
 	echo 'could not get the random movies'; 
@@ -67,7 +67,7 @@ while($nurRated = mysql_fetch_array($retval,MYSQL_ASSOC))
 	array_push($nur,$nurRated);
 	$sim = array();
 	//getting avg rating of the non rated movie we are currently working for
-	$avg = 'select avg(rating) as avg from newRating where mid='.$nurRated['mid'].' limit 1000';
+	$avg = 'select avg(rating) as avg from newRating where mid='.$nurRated['mid'].' limit 100';
 	$retAvg = mysql_query($avg,$conn);
 	if(!$retAvg){
 		die(mysql_error());
@@ -76,7 +76,7 @@ while($nurRated = mysql_fetch_array($retval,MYSQL_ASSOC))
 	//echo $nurRated['mid'].'<br>';
 	
 	foreach ($urRated as $key => $value) {
-		$qury = 'select nurRated.mid as nurmid, nurRated.rating as nurRating, urRating  from newRating as nurRated join (select uid,rating as urRating from newRating where mid='.$value['mid'].') as urRated on nurRated.uid=urRated.uid and mid ='.$nurRated['mid'];
+		$qury = 'select nurRated.mid as nurmid, nurRated.rating as nurRating, urRating  from newRating as nurRated join (select uid,rating as urRating from newRating where mid='.$value['mid'].' limit 10) as urRated on nurRated.uid=urRated.uid and mid ='.$nurRated['mid']." limit 10";
 		$retRat = mysql_query($qury,$conn);
 		if(!$retRat)
 		{
@@ -96,10 +96,10 @@ while($nurRated = mysql_fetch_array($retval,MYSQL_ASSOC))
 			//
 		}
 			$dsim = sqrt($dlsim)*sqrt($drsim);
-			$s = $nsim/$dsim;
-			if(!$s){
-				$s=0;
+			if(!$dsim){
+				$dsim = 0.00000000001;
 			}
+			$s = $nsim/$dsim;
 		//echo "nsim=".$nsim."dsim=".$dsim."<br>";
 		//var_dump($s);
 		//echo "<br>";
@@ -120,9 +120,12 @@ foreach($similarity as $key => $row)
 		$np += $value*$urRated[$key2]['rating'];
 		$dp += abs($value);
 	}
-	$v = $np/$dp;
-	if(!$v){
+
+	if(!$dp){
 		$v = $avgR;// if zero then default to avg of user rating
+	}
+	else{
+		$v = $np/$dp;
 	}
 	array_push($p,$v);
 	array_push($p,$nur[$key]['title']);	
@@ -155,9 +158,10 @@ foreach($nur as $key => $value) {
 		$count++;
 	}
 	$avgGenre = $avgG/$count;
+	$avgGenre /= 19; 
 	//echo $i;
 	array_push($AvgGenre,$avgGenre);
-	$pred = ($prediction[$key][0]*0.5) - ($avgGenre*(0.5));
+	$pred = ($prediction[$key][0]*0.5/5) - ($avgGenre*(0.5));
 	//$u = $avgGenre*0.5;
 	//echo $avgGenre." ".$u." ".$value['title']."<br>";
 	array_push($newPred,$pred);
@@ -165,6 +169,67 @@ foreach($nur as $key => $value) {
 	array_push($newPred,$avgGenre);
 	array_push($newPrediction,$newPred); 
 }
+
+//gettting the total no of rating
+$qury = "select count(*) as count from newRating";
+$n_info = mysql_query($qury, $conn);
+$n = mysql_fetch_array($n_info,MYSQL_ASSOC);
+//echo "$n : ";
+//var_dump($n['count']);
+$seren = array();
+foreach ($nur as $key => $value1) {
+	$serenmin = array();
+	//getting the no of user that rated non user rated movies
+	$qury = "select count(mid) as count from newRating where mid = ".$value1['mid'];
+	$y_info = mysql_query($qury,$conn);
+	$y = mysql_fetch_array($y_info,MYSQL_ASSOC);
+	//echo "<br>y : ";
+	//var_dump($y['count']);
+
+	$min = 2;
+	foreach ($urRated as $i => $value) {
+		
+		//echo "<br>nur";
+		//var_dump($value1['mid']);
+
+		//getting the no of user that rated the movies seen by the user
+		$qury = "select count(*) as count from newRating where mid = ".$value['mid'];
+		$x_info = mysql_query($qury, $conn);
+		$x = mysql_fetch_array($x_info,MYSQL_ASSOC);
+		//echo "<br>x:";
+		//var_dump($x['count']);
+		
+		//getting the no of user that rated both the (user rated movies) and non user rated movies
+		$qury = "select count(r.mid) as count from newRating as r join ( select uid from newRating where mid = ".$value['mid']." limit 10) as u on r.uid = u.uid and r.mid = ".$value1['mid']." limit 10";
+		$xy_info = mysql_query($qury, $conn);
+		$xy = mysql_fetch_array($xy_info,MYSQL_ASSOC);
+		//echo "<br>xy : ";
+		//var_dump($xy['count']); 		
+
+ 		$px = $x['count']/$n['count'];
+ 		$py = $y['count']/$n['count'];
+ 		$pxy = $xy['count']/$n['count'];
+
+ 		if(!$pxy){
+ 			$npmi = 1;
+ 		}else{
+ 			$npmi = log($pxy/($px*$py),10)/log($pxy,10);
+ 		}
+
+ 		if($min>$npmi){
+ 			$min = $npmi;
+ 		}
+ 		//echo "<br>npmi : ";
+ 		//var_dump($npmi);
+	}
+	//divided by 5 for normalisation purpose
+	$pred = ($prediction[$key][0]*0.4/5) - ($AvgGenre[$key]*(0.3)) + ($min*0.3);
+	array_push($serenmin, $pred);
+	array_push($serenmin,$min);
+	array_push($serenmin, $value1['title']);
+	array_push($seren, $serenmin);
+}
+
 
 //var_dump($newPrediction);
 foreach ($prediction as $i => $value) {
@@ -187,65 +252,42 @@ foreach ($newPrediction as $i => $value) {
 	}
 }
 
-foreach ($newPrediction as $i => $value) {
-	foreach ($variable as $key => $value) {
-		$qury = "select count(*) as count from rating as r join ( select uid from rating where mid = ". ." ) as u where r.u = uid and r.mid = ". .";";
-		$match = mysql_query($qury, $conn);
- 
- 		$qury = "select count(*) as count from rating where mid = ". .";";
- 		$match = mysql_query($qury, $conn);
-
- 		$qury = "select count(*) as count from rating where mid = "..";";
- 		$match = mysql_query($qury,$conn);
+foreach ($seren as $i => $value) {
+	for($j=0;$j<sizeof($seren)-1;$j++) {
+		if($seren[$j][0]<$seren[$j+1][0]){
+			$temp = $seren[$j];
+			$seren[$j] = $seren[$j+1];
+			$seren[$j+1] = $temp;
+		}
 	}
 }
 
+// foreach ($prediction as $key => $value) {
+// 	echo json_encode($value);
+// }
+
+// echo "<br>newPrediction<br>";
+// foreach ($newPrediction as $key => $value) {
+// 	echo json_encode($value);
+// }
+
+// echo "<br>new NEW Prediction<br>";
+// foreach ($seren as $key => $value) {
+// 	echo json_encode($value);
+// }
+$allPrediction = array();
+
+$allPrediction['prediction'] = $prediction;
+$allPrediction['newPrediction'] = $newPrediction;
+$allPrediction['seren'] = $seren;
+
+echo json_encode($allPrediction);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-echo "prediction<br>";
-foreach ($prediction as $key => $value) {
-	var_dump($value);
-	echo '<br>';
-}
-
-echo "<br>newPrediction<br>";
-foreach ($newPrediction as $key => $value) {
-	var_dump($value);
-	echo "    ";
-	
-	echo '<br>';
-}
-echo "<br>";
 //echo $uid;
 $something = 'http://127.0.0.1:8080/login?uid='.$uid;
 $link = "<form action='".$something."' method='get'> <input type='submit' value='go back' /> </form>"; 
 //echo $something;
-echo $link;
-
 mysql_close($conn);
 ?>
 
