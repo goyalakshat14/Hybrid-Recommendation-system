@@ -172,7 +172,7 @@ app.get('/addrating',function (req,res){
     	{
     		console.log(err);
     		console.log('Error while performing Query.');
-    		res.render('option',{message : "messageovie already rated",recomm : "http://127.0.0.1/collaborative_filtering/collab_filter.php?uid="+uid});
+    		res.render('option',{message : "movie already rated",recomm : "http://127.0.0.1/collaborative_filtering/collab_filter.php?uid="+uid});
     	}
   		
   	});

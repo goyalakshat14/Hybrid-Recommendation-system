@@ -1,12 +1,12 @@
 <h1> Login </h1>
 <div id="login">
-<form action='' method="get" id="login">
+<form action='javascript:formget();' method="get" id="login">
             <label for="uid">user id:</label>
             <input type="text" id="uid" name="uid" placeholder="enter your userid" autofocus="on" />
-            <input id ="submit" type="submit" value="log in" onclick="formget()" />
+            <input id ="submit" type="submit" value="log in" />
 </form>
 </div>
 
 <h2 id='message'> {{message}}</h2>
 
-<h2><a href="/register"> Register</a></h2>
+<h2><a href="" onclick="register();"> Register</a></h2>
