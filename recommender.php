@@ -83,7 +83,7 @@ while($nurRated = mysql_fetch_array($retval,MYSQL_ASSOC))
 			die(mysql_error());
 		}		
 		$nsim=0;
-		$dlsim=0;
+		$dlsim=0; 
 		$drsim=0;
 
 		//echo "calculating<br>".$value['mid'];
