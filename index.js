@@ -11,7 +11,7 @@ var io = require('socket.io').listen(server);
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'tannugoyalU',
+  password : 'DBPassword',
   database : 'newMovieLens'
 });
 
