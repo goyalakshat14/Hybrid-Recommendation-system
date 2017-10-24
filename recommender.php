@@ -3,7 +3,7 @@
 header("Access-Control-Allow-Origin: *");
 $dbhost = 'localhost';
 $dbuser = 'root';
-$dbpass = 'tannugoyalU';
+$dbpass = 'DBPassword';
 
 $conn = mysql_connect($dbhost, $dbuser, $dbpass);
 if(! $conn )
